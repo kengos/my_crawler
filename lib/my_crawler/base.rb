@@ -12,6 +12,7 @@ module MyCrawler
       def setup
         Capybara.register_driver :poltergeist do |app|
           Capybara::Poltergeist::Driver.new(app, {
+            phantomjs_logger: Logger.new('/dev/null'),
             js_errors: false,
             timeout: 5000,
             window_size: [1600, 768]
