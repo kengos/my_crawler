@@ -5,7 +5,18 @@ module MyCrawler
 
     class << self
       def run
+        setup
         self.new.execute
+      end
+
+      def setup
+        Capybara.register_driver :poltergeist do |app|
+          Capybara::Poltergeist::Driver.new(app, {
+            js_errors: false,
+            timeout: 5000,
+            window_size: [1600, 768]
+          })
+        end
       end
     end
 
@@ -35,16 +46,6 @@ module MyCrawler
         'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36 [Hamamatsu.rb]',
         'Accept-Language' => 'ja,en-US;q=0.8,en;q=0.6'
       }
-    end
-
-    def setup
-      Capybara.register_driver :poltergeist do |app|
-        Capybara::Poltergeist::Driver.new(app, {
-          js_errors: false,
-          timeout: 5000,
-          window_size: [1600, 768]
-        })
-      end
     end
   end
 end
