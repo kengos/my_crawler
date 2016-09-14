@@ -3,9 +3,17 @@
 ## Installation
 
 ```
+$ brew install phantomjs
 $ git clone git@github.com:kengos/my_crawler.git
 $ gem install bundler
 $ bundle install --path=vendor/bundle
+```
+
+## Execution
+
+```
+$ bin/console
+irb> MyCrawler::Yahoo.run
 ```
 
 ## MIT License
