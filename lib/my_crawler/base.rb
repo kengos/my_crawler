@@ -38,7 +38,7 @@ module MyCrawler
 
     def save_screenshot(filename = nil)
       filename ||= Time.now.strftime('%Y%m%d%H%M%S') + '.png'
-      session.save_screenshot(filename)
+      session.save_screenshot(filename, full: true)
     end
 
     def session_headers
